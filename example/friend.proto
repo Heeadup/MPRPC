@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package fixbug;
+
+option cc_generic_services = true;  //如果是JAVA java_gene....,生成service类和方法描述
+
+message GetFriendResultCode
+{
+    int32 errcode = 1; 
+    bytes errmsg = 2;
+}
+
+message GetFriendRequest
+{
+    uint32 id = 1;
+    repeated bytes name = 2;
+}
+
+message GetFriendResponse
+{
+    GetFriendResultCode result = 1;
+    repeated bytes name = 2;
+}
+
+service GetFriendServiceRpc
+{
+    rpc Getfriend(GetFriendRequest) returns(GetFriendResponse);
+}
